@@ -26,25 +26,20 @@ class Board extends React.Component {
         // } else {
         //     status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         // }
+        const row = [0, 1, 2],
+            col = [0, 1, 2];
 
         return (
             <div>
                 {/* <div className="status">{status}</div> */}
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+                {
+                    row.map((item, index1) =>
+                    (<div key={item} className="board-row">
+                        {
+                            col.map((i, index2) => this.renderSquare(3 * index1 + index2))
+                        }
+                    </div>))
+                }
             </div>
         );
     }
